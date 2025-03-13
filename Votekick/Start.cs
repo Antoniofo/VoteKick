@@ -25,7 +25,7 @@ namespace VoteKick
             //{
             //    Log.Info($"arg: {str}\n");
             //}
-            if (Server.PlayerCount < Plugin.instance.Config.PlayerThreshold)
+            if (Server.PlayerCount < Plugin.Instance.Config.PlayerThreshold)
             {
                 response = "Not enough player on the server";
                 return false;
@@ -55,12 +55,12 @@ namespace VoteKick
                 response = "You can't votekick an admin";
                 return false;
             }         
-            if(Plugin.VKLeft <= 0)
+            if(Plugin.VkLeft <= 0)
             {
                 response = "No more votekick for this round";
                 return false;
             }
-            if (Plugin.instance.coroutineHandle.IsRunning)
+            if (Plugin.Instance.CoroutineHandle.IsRunning)
             {
                 response = "A votekick is still running";
                 return false;
@@ -79,7 +79,7 @@ namespace VoteKick
                 
             }
             Server.ExecuteCommand($"@{Player.Get(sender).DisplayNickname} has started VoteKick");
-            Plugin.instance.coroutineHandle = Timing.RunCoroutine(Plugin.VoteKick(pid));
+            Plugin.Instance.CoroutineHandle = Timing.RunCoroutine(Plugin.VoteKick(pid));
             response = "VoteKick started";
             return true;
         }
