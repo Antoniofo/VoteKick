@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CommandSystem;
 using Exiled.API.Features;
 
@@ -25,10 +21,10 @@ namespace VoteKick
                 Plugin.Votes++;
                 Player.Get(sender).SessionVariables["votekick_voted"] = true;
                 Map.Broadcast(new Exiled.API.Features.Broadcast(Plugin.Instance.Translation.VoteNeeded.Replace("%votes%",Plugin.Votes.ToString()).Replace("%voteneeded%",(Player.List.Count / 2 + 1).ToString()),5));
-                response = "You voted to kick";
+                response = Plugin.Instance.Translation.VoteToKick;
                 return true;
             }
-            response = "No vote currently or already voted";
+            response = Plugin.Instance.Translation.NoVoteOrAlreadyVoted;
             return false;
         }
     }

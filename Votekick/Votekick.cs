@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Exiled.Permissions.Extensions;
-using Exiled.API.Features;
 using CommandSystem;
 
 namespace VoteKick
@@ -30,7 +24,7 @@ namespace VoteKick
 
         protected override bool ExecuteParent(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            response = "Invalide subcommand. Available: start, vote, list";
+            response = Plugin.Instance.Translation.Usage;
             return false;
         }
     }
